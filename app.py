@@ -10,7 +10,7 @@ try:
     user_df = pd.read_pickle(USER_DF_PATH)
     job_df = pd.read_pickle(JOB_DF_PATH)
 except FileNotFoundError:
-    st.error("Không tìm thấy file dữ liệu hoặc mô hình. Vui lòng chạy train_model.py trước!")
+    st.error("không tìm được dữ liệu đã train")
     st.stop()
 
 st.title("🔍 Job Recommend System")
@@ -31,7 +31,7 @@ if st.button("Suggest"):
             for i, job in enumerate(recommended_jobs, 1):
                 st.write(f"**#{i} - Job title: {job['job_title']} at {job['company_name']}**")
                 st.write(f"Reason: {job['reason']}")
-                # st.write(f"Điểm khớp: {job['matching_score']}")  # Uncomment nếu muốn hiển thị điểm
+                # st.write(f"Điểm khớp: {job['matching_score']}")
                 st.write("---")
     except ValueError as e:
         st.error(str(e))
